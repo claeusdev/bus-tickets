@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   resources :orders
-  get 'pages/index'
+  get '/profile', to: "pages#profile"
 
   resources :tickets
   resources :routes

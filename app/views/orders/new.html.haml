@@ -1,0 +1,11 @@
+.page.py-5
+  .container
+    .row.justify-content-center
+      .col-sm-6
+        %h2.text-center= "Would you like to reserve this ticket #{current_user.email} "
+        %h2= @ticket.id
+
+        %center
+          = form_with(model: @order) do |o|
+
+            = o.submit "Yes continue my order", class: "btn btn-primary"

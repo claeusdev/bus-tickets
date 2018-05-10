@@ -1,11 +1,12 @@
-<div class="container">
-  <h2 class="text-center">From <%= @route.origin %> to <%= @route.destination %></h2>
-  <div class="row">
-    <%= render @route.tickets %>
+
+<div class="page py-5">
+  <div class="container">
+    <h2 class="text-center">From <%= @route.origin %> to <%= @route.destination %></h2>
+    <div class="row">
+      <%= render @route.tickets %>
+    </div>
   </div>
 </div>
-
-
 
 
 <!-- Modal -->
@@ -20,12 +21,12 @@
       </div>
       <div class="modal-body">
         <form>
-        
+
           <input type="text" class="form-control">
           <input type="text" class="form-control">
-          
+
           <input type="submit" value="Get it paid">
-        
+
         </form>
       </div>
       <div class="modal-footer">
@@ -36,45 +37,52 @@
   </div>
   <script type="text/javascript">
 
+    $(document).ready(function(){
+      function mobilePay(){
+        var requestPayload = {
+          "price": 1,
+          "network": "tigo",
+          "recipient_number": "0274658626",
+          "sender": "0274658626",
+          "option": "rttt",
+          "apikey": "1ba0ebe54200d42ee7fae83e63850ae447dab114"
+        }
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", 'https://client.teamcyst.com/api_call.php', true);
 
-    function mobilePay(){
-      var requestPayload = 
-      var xhr = new XMLHttpRequest();
-      xhr.open("POST", 'https://client.teamcyst.com/api_call.php', true);
+        //Send the proper header information along with the request
+        xhr.setRequestHeader("Content-type", "application/json");
 
-      //Send the proper header information along with the request
-      xhr.setRequestHeader("Content-type", "application/json");
+        xhr.onreadystatechange = function() {
+          //Call a function when the state changes.
+            if(xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
+                // Request finished. Do processing here.
+                console.log(this.responseText);
+            }
+        }
+        //Replace requestPayload with the payload you would be sending
+        xhr.send(JSON.parse({
+          "price": 1,
+          "network": "tigo",
+          "recipient_number": "0274658626",
+          "sender": "0274658626",
+          "option": "rttt",
+          "apikey": "1ba0ebe54200d42ee7fae83e63850ae447dab114"
+        }));
 
-      xhr.onreadystatechange = function() {
-        //Call a function when the state changes.
-          if(xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
-              // Request finished. Do processing here.
-              console.log(this.responseText);
-          }
+        console.log(JSON.parse({
+          "price": 1,
+          "network": "tigo",
+          "recipient_number": "0274658626",
+          "sender": "0274658626",
+          "option": "rttt",
+          "apikey": "1ba0ebe54200d42ee7fae83e63850ae447dab114"
+        }));
       }
-      //Replace requestPayload with the payload you would be sending
-      xhr.send(JSON.parse({
-        "price": 1,
-        "network": "tigo",
-        "recipient_number": "0274658626",
-        "sender": "0274658626",
-        "option": "rttt",
-        "apikey": "1ba0ebe54200d42ee7fae83e63850ae447dab114"
-      }));
 
-      console.log(JSON.parse({
-        "price": 1,
-        "network": "tigo",
-        "recipient_number": "0274658626",
-        "sender": "0274658626",
-        "option": "rttt",
-        "apikey": "1ba0ebe54200d42ee7fae83e63850ae447dab114"
-      }));
-    }
-    
+    })
+
 
 
 </script>
 </div>
-
-
