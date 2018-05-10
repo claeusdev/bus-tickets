@@ -1,0 +1,18 @@
+.jumbotron.page.bg-white.pb-4
+  .container
+    .row.align-items-center
+      .col-sm-5
+        %h1 Buy bus tickets for destinations across Ghana.
+        %p Search and fins the most reliable bus tickets and purchase at the comfort of your home
+        = form_with(url: search_path, method: :get, local: true) do |f|
+          .form-group
+            = f.label :from, class: "form-label"
+            = f.text_field :from, placeholder: "Where are you travelling from?", class: "form-control"
+          .form-group
+            = f.label :destination, class: "form-label"
+            = f.text_field :destination, placeholder: "Where are you travelling to?", class: "form-control"
+
+          = f.submit "Find tickets", class: "btn btn-primary"
+      .col-sm-7
+        .jumbotron-image
+        = image_tag('bus_stop.png', class: "img-fluid")
