@@ -6,6 +6,6 @@
         %h2= @ticket.id
 
         %center
-          = form_with(model: @order) do |o|
-
+          = form_with(model: @order, locale: true) do |o|
+            = o.hidden_field :ticket_id, value: @ticket.id
             = o.submit "Yes continue my order", class: "btn btn-primary"

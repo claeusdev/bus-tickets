@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   resources :orders
   get '/profile', to: "pages#profile"
 
-  resources :tickets
+  resources :tickets do
+    member do
+      post "/reserve", to: "orders#reserve"
+    end
+  end
   resources :routes
   devise_for :users
 

@@ -2,7 +2,8 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-sm-8">
-        <h1 class="text-center"><%= current_user.email %></h1>
+        <h1 class="text-center">Welcome, <%= current_user.email %></h1>
+        <hr>
         <ul class="nav nav-tabs" id="myTab" role="tablist">
           <li class="nav-item">
             <a class="nav-link active" id="tickets-tab" data-toggle="tab" href="#tickets" role="tab" aria-controls="tickets" aria-selected="true">Tickets</a>
@@ -16,18 +17,24 @@
         </ul>
         <div class="tab-content" id="myTabContent">
           <div class="tab-pane fade show active" id="tickets" role="tabpanel" aria-labelledby="tickets-tab">
-            <div class="row justify-content-center">
-              <div class="col-sm-8">
-                <h2 class="text-center">
-                  Your tickets live here
-                </h2>
-              </div>
-            </div>
+            <h2 class="text-center py-4">
+              <% if current_user.orders.present? %>
+                <div class="row">
+                  <div class="col-sm-4">
+                    <%= render current_user.orders %>
+                  </div>
+                </div>
+              <% else %>
+                <h1 class="text-center">
+                  You have not reserved any ticket <%= link_to "Search for tickets", root_path %>
+                </h1>
+              <% end %>
+            </h2>
           </div>
           <div class="tab-pane fade" id="account" role="tabpanel" aria-labelledby="account-tab">
             <div class="row justify-content-center">
               <div class="col-sm-8">
-                <h2 class="text-center">
+                <h2 class="text-center  py-4">
                   Edit your account details
                 </h2>
               </div>
@@ -36,7 +43,7 @@
           <div class="tab-pane fade" id="settings" role="tabpanel" aria-labelledby="settings-tab">
             <div class="row justify-content-center">
               <div class="col-sm-8">
-                <h2 class="text-center">
+                <h2 class="text-center  py-4">
                   Your account settings
                 </h2>
               </div>
