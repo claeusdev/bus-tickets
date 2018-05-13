@@ -20,9 +20,7 @@
             <h2 class="text-center py-4">
               <% if current_user.orders.present? %>
                 <div class="row">
-                  <div class="col-sm-4">
-                    <%= render current_user.orders %>
-                  </div>
+                  <%= render current_user.orders %>
                 </div>
               <% else %>
                 <h1 class="text-center">

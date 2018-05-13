@@ -1,7 +1,8 @@
 .card
     .card-body
+        %p= link_to "View", ticket
         %h3= number_to_currency(ticket.price, {unit: "GHS"})
         %p.lead= ticket.departure_date.strftime('Departure date: %m/%d/%Y')
         %p.lead= ticket.departure_time.strftime('Departure time: %I:%M%p')
-        = link_to "Reserve ticket", reserve_ticket_path(ticket_id: ticket.id), method: :post
-        -# .btn.btn-primary{"data-toggle" => "modal", "data-target" => "#exampleModal"} Buy
+        -# = link_to "Reserve ticket", reserve_ticket_path(ticket_id: ticket.id), method: :post
+        

@@ -1,6 +1,6 @@
-
-.card
-  .card-header= order.ticket_id
-  .card-body
-    %p= order.ticket.departure_date.strftime('Departure date: %m/%d/%Y')
-    %p= order.ticket.departure_time.strftime('Departure time: %I:%M%p')
+.col-sm-4
+    .card
+        .card-header= order.ticket_id
+        .card-body
+            %p= order.ticket.departure_date.strftime('Departure date: %m/%d/%Y')
+            %p= order.ticket.departure_time.strftime('Departure time: %I:%M%p')

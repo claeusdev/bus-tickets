@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :tickets do
     member do
-      post "/reserve", to: "orders#reserve"
+      get "/reserve", to: "orders#reserve"
     end
   end
   resources :routes

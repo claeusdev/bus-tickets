@@ -3,12 +3,17 @@ class OrdersController < ApplicationController
     # before_action :set_ticket
 
     def reserve
-      if params[:ticket_id]
-        @ticket = Ticket.find(params[:ticket_id])
+
+      if params[:id]
+        @ticket = Ticket.find(params[:id])
+        p @ticket
         current_user.orders.create(ticket_id: @ticket.id, order_total: @ticket.price)
         redirect_to profile_path
       end
     end
+
+
+
     # def new
     #   @order = Order.new
     # end
