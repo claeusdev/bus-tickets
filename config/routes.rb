@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  resources :buses
   resources :orders
   get '/profile', to: "pages#profile"
 

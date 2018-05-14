@@ -6,5 +6,8 @@ class DashboardsController < ApplicationController
   	@orders = Order.all
   	@route = Route.new
   	@ticket = Ticket.new
+  	@buses = Bus.all
+
+  	@bus = Bus.new
   end
 end
