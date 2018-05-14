@@ -1,0 +1,151 @@
+<div class="page py-5">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-sm-8">
+				<ul class="nav nav-tabs" id="myTab" role="tablist">
+		          <li class="nav-item">
+		            <a class="nav-link active" id="routes-tab" data-toggle="tab" href="#routes" role="tab" aria-controls="routes" aria-selected="true">Routes</a>
+		          </li>
+		          <li class="nav-item">
+		            <a class="nav-link" id="users-tab" data-toggle="tab" href="#users" role="tab" aria-controls="users" aria-selected="false">Users</a>
+		          </li>
+		          <li class="nav-item">
+		            <a class="nav-link" id="tickets-tab" data-toggle="tab" href="#tickets" role="tab" aria-controls="tickets" aria-selected="false">Tickets</a>
+		          </li>
+		          <li class="nav-item">
+		            <a class="nav-link" id="orders-tab" data-toggle="tab" href="#orders" role="tab" aria-controls="orders" aria-selected="false">All purchases</a>
+		          </li>
+		        </ul>
+		        <div class="tab-content" id="myTabContent">
+		          <div class="tab-pane fade show active" id="routes" role="tabpanel" aria-labelledby="routes-tab">
+		          	<div class="btn btn-success btn-sm" data-toggle="modal" data-target="#newRouteModal">
+					New route
+				</div>
+		          	<h2 class="text-center py-4">All Routes</h2>
+		              <% @routes.each do |route| %>
+						<p><%= route.origin %> -- <%= route.destination %></p>
+		              <% end %>
+		          </div>
+		          <div class="tab-pane fade" id="users" role="tabpanel" aria-labelledby="users-tab">
+		            <div class="row justify-content-center">
+		              <div class="col-sm-12">
+		                <h2 class="text-center  py-4">
+		                  All Users <span><%= @users.all.count %></span>
+		                </h2>
+		                <% @users.each do |user| %>
+							<p><%= user.email %></p>
+		                <% end %>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="tab-pane fade" id="tickets" role="tabpanel" aria-labelledby="tickets-tab">
+		            <div class="row justify-content-center">
+		              <div class="col-sm-12">
+		              	<div class="btn btn-success btn-sm" data-toggle="modal" data-target="#newTicketModal">
+							New Ticket
+						</div>
+		                <h2 class="text-center  py-4">
+		                	All Tickets
+		                </h2>
+		                <% @tickets.each do |ticket| %>
+							<p><%= ticket.route.origin %> -- <%= ticket.route.destination %></p>
+							<p><%= ticket.departure_date.strftime('Departure date: %m/%d/%Y') %></p>
+
+		                <% end %>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="tab-pane fade" id="orders" role="tabpanel" aria-labelledby="orders-tab">
+		            <div class="row justify-content-center">
+		              <div class="col-sm-12">
+		                <h2 class="text-center  py-4">
+		                	Purchases
+		                </h2>
+		                <% @orders.each do |order| %>
+							<p><%= order.user.email %> -- <%= order.ticket.route.destination %></p>
+							<p><%= order.ticket.departure_date.strftime('Departure date: %m/%d/%Y') %></p>
+							<hr>
+		                <% end %>
+		              </div>
+		            </div>
+		          </div>
+		        </div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="newRouteModal" tabindex="-1" role="dialog" aria-labelledby="newRouteModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-warning">
+        <h5 class="modal-title" id="newRouteModalLabel">New route</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= form_with(model: @route) do |f| %>
+			<div class="form-group">
+
+				<%= f.text_field :origin, class: "form-control", placeholder: "Origin" %>
+			</div>
+
+			<div class="form-group">
+				<%= f.text_field :destination, class: "form-control", placeholder: "Destination" %>
+			</div>
+			<div class="modal-footer">
+			    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+				<%= f.submit "Save Route", class: "btn btn-success" %>
+		  	</div>
+        <% end %>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="newTicketModal" tabindex="-1" role="dialog" aria-labelledby="newTicketModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-warning">
+        <h5 class="modal-title" id="newTicketModalLabel">New route</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= form_with(model: @ticket) do |f| %>
+       <!--  t.bigint "route_id"
+    t.decimal "price"
+    t.datetime "departure_date"
+    t.time "departure_time" -->
+			<div class="form-group">
+				<%= f.label :departure_date, class: "form-label" %>
+				<%= f.date_field :departure_date, class: "form-control" %>
+			</div>
+
+			<div class="form-group">
+				<%= f.label :departure_time, class: "form-label" %>
+				<%= f.time_field :departure_time, class: "form-control" %>
+			</div>
+
+			<div class="form-group">
+				<%= f.label :route_id, class: "form-label" %>
+				<%= f.collection_select :route_id, Route.all, :id, :name, class: "form-control" %>
+			</div>
+
+			<div class="form-group">
+				<%= f.label :price, class: "form-label" %>
+				<%= f.number_field :price, placeholder: "Set a price", class: "form-control" %>
+			</div>
+			<div class="modal-footer">
+			    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+				<%= f.submit "Save Route", class: "btn btn-success" %>
+		  	</div>
+        <% end %>
+      </div>
+      
+    </div>
+  </div>
+</div>

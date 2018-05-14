@@ -8,6 +8,13 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>
+          <% if current_user.admin == true %>
+
+            <li class="nav-item">
+              <%= link_to "Manage Application", admin_path, style: "line-height: 50px; padding-right: 10px" %>
+            </li>
+
+          <% end %>
           <li class="nav-item">
             <%= link_to "Dashboard", profile_path, style: "line-height: 50px; padding-right: 10px" %>
           </li>

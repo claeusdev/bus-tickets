@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   resources :orders
   get '/profile', to: "pages#profile"
 
@@ -8,6 +9,8 @@ Rails.application.routes.draw do
       get "/reserve", to: "orders#reserve"
     end
   end
+
+  get '/admin', to: "dashboards#index"
   resources :routes
   devise_for :users
 
