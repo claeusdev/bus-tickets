@@ -5,6 +5,7 @@
 				<h3><%= number_to_currency(@ticket.price, unit: "GHS") %></h3>
 				<p class="lead"><%= @ticket.departure_date.strftime('Departure date: %m/%d/%Y') %></p>
 				<p class="lead"><%= @ticket.departure_time.strftime('Departure time: %I:%M%p') %></p>
+        <p class="lead">Bus Number: <mark><%= @ticket.bus.number %></mark></p>
 				<div class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
 					Buy
 				</div>
