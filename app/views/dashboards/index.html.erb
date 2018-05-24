@@ -17,6 +17,7 @@
 		          </li>
 		          <li class="nav-item">
 		            <a class="nav-link" id="buses-tab" data-toggle="tab" href="#buses" role="tab" aria-controls="buses" aria-selected="false">Buses</a>
+
 		          </li>
 		        </ul>
 		        <div class="tab-content" id="myTabContent">
@@ -78,6 +79,9 @@
 		              	<div class="btn btn-success btn-sm" data-toggle="modal" data-target="#newBusModal">
 							New Bus
 						</div>
+						<div class="btn btn-success btn-sm" data-toggle="modal" data-target="#newSeatModal">
+							New Seat
+						</div>
 		                <h2 class="text-center  py-4">
 		                	Buses
 		                </h2>
@@ -129,7 +133,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header bg-warning">
-        <h5 class="modal-title" id="newTicketModalLabel">New route</h5>
+        <h5 class="modal-title" id="newTicketModalLabel">New Ticket</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -201,6 +205,39 @@
 			<div class="modal-footer">
 			    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
 				<%= f.submit "Save Route", class: "btn btn-success" %>
+		  	</div>
+        <% end %>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="newSeatModal" tabindex="-1" role="dialog" aria-labelledby="newSeatModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-warning">
+        <h5 class="modal-title" id="newSeatModalLabel">Seat</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= form_with(model: @seat) do |f| %>
+   
+			<div class="form-group">
+				<%= f.label :bus_id, "Number of seats", class: "form-label" %>
+				<%= f.collection_select :bus_id, Bus.all, :id, :number, {}, class: "form-control" %>
+			</div>
+
+			<div class="form-group">
+				<%= f.label :name, class: "form-label" %>
+				<%= f.text_field :name, class: "form-control" %>
+			</div>
+
+			<div class="modal-footer">
+			    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+				<%= f.submit "Save Seat", class: "btn btn-success" %>
 		  	</div>
         <% end %>
       </div>
