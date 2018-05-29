@@ -7,7 +7,7 @@ class DashboardsController < ApplicationController
   	@route = Route.new
   	@ticket = Ticket.new
   	@buses = Bus.all
-
+    @seat = Seat.new
   	@bus = Bus.new
   end
 end

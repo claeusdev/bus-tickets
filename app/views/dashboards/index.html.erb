@@ -87,7 +87,7 @@
 		                </h2>
 		                <% @buses.each do |bus| %>
 							<p>Bus Number: <%= bus.number %></p>
-							<p>Number of seats: <%= bus.seats %></p>
+							<p>Number of seats: <%= bus.seats.count %></p>
 							<hr>
 		                <% end %>
 		              </div>

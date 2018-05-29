@@ -20,6 +20,8 @@ gem 'bootstrap', '~> 4.1.1'
 gem 'devise'
 gem 'simple_form'
 gem 'haml-rails'
+gem 'rails-erd', group: :development
+gem 'prawn'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
