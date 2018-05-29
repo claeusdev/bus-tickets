@@ -55,6 +55,7 @@
 							<p><strong>Route:</strong> <%= ticket.route.origin %> -- <%= ticket.route.destination %></p>
 							<p><strong>Departure Date:</strong> <%= ticket.departure_date.strftime('Departure date: %m/%d/%Y') %></p>
 							<p><strong>Bus Number:</strong> <mark><%= ticket.bus.number %></mark></p>
+							<p><%= link_to "Delete", ticket, method: "delete", class: "btn btn-danmger" %></p>
 		                <% end %>
 		              </div>
 		            </div>

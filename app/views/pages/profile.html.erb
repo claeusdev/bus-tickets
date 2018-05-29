@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-sm-8">
-        <h1 class="text-center">Welcome, <%= current_user.email %></h1>
+        <h1 class="text-center">Welcome, <%= current_user.username %></h1>
         <hr>
         <ul class="nav nav-tabs" id="myTab" role="tablist">
           <li class="nav-item">
@@ -29,21 +29,14 @@
               <% end %>
             </h2>
           </div>
-          <div class="tab-pane fade" id="account" role="tabpanel" aria-labelledby="account-tab">
-            <div class="row justify-content-center">
-              <div class="col-sm-8">
-                <h2 class="text-center  py-4">
-                  Edit your account details
-                </h2>
-              </div>
-            </div>
-          </div>
+          
           <div class="tab-pane fade" id="settings" role="tabpanel" aria-labelledby="settings-tab">
             <div class="row justify-content-center">
               <div class="col-sm-8">
                 <h2 class="text-center  py-4">
                   Your account settings
                 </h2>
+                <%= link_to "Edit", edit_user_registration_path, class: "btn btn-success" %>
               </div>
             </div>
           </div>
