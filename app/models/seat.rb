@@ -1,4 +1,4 @@
 class Seat < ApplicationRecord
 	belongs_to :bus
-	has_many :tickets, dependent: :destroy
+	has_one :ticket, dependent: :destroy
 end

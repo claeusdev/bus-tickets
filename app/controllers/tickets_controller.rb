@@ -10,10 +10,12 @@ class TicketsController < ApplicationController
 
 		if @ticket.save
             redirect_to admin_path
+        else 
+            p @ticket.errors
 		end
 	end
 
-	def edit
+	 def edit
 
     end
 
@@ -47,7 +49,7 @@ class TicketsController < ApplicationController
 	end
 
 	def ticket_params
-		params.require(:ticket).permit(:route_id, :departure_time, :departure_date, :price, :bus_id)
+		params.require(:ticket).permit(:route_id, :departure_time, :departure_date, :price, :bus_id, :seat_id)
 	end
 	
 end

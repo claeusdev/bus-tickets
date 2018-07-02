@@ -167,6 +167,11 @@
 			</div>
 
 			<div class="form-group">
+				<%= f.label :seat_id, class: "form-label" %>
+				<%= f.collection_select :seat_id, Seat.all, :id, :name, class: "form-control" %>
+			</div>
+
+			<div class="form-group">
 				<%= f.label :price, class: "form-label" %>
 				<%= f.number_field :price, placeholder: "Set a price", class: "form-control" %>
 			</div>
