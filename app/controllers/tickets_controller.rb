@@ -1,5 +1,5 @@
 class TicketsController < ApplicationController
-	before_action :find_ticket, only: :show
+	before_action :find_ticket, only: [:show, :destroy]
 
 	def show
 	end

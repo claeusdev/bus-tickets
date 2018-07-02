@@ -11,6 +11,15 @@ class RoutesController < ApplicationController
     	end
     end
 
+    def destroy
+        @route = Route.find(params[:id])
+        @route.destroy
+        respond_to do |format|
+            format.html { redirect_to admin_path, notice: 'Item was successfully destroyed.' }
+            format.json { head :no_content }
+        end
+    end
+
 
     private
 
