@@ -1,8 +1,7 @@
 class TicketsController < ApplicationController
-	before_action :find_ticket
+	before_action :find_ticket, only: :show
 
 	def show
-		@ticket = Ticket.find(params[:id])
 	end
 
 
@@ -10,11 +9,11 @@ class TicketsController < ApplicationController
 		@ticket = Ticket.new(ticket_params)
 
 		if @ticket.save
-			redirect_to admin_path
+            redirect_to admin_path
 		end
 	end
 
-	 def edit
+	def edit
 
     end
 
