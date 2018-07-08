@@ -7,7 +7,7 @@
 				<p class="lead"><%= @ticket.departure_time.strftime('Departure time: %I:%M%p') %></p>
         <p class="lead">Bus Number: <mark><%= @ticket.bus.number %></mark></p>
         <% if @ticket.seat.present? %>
-          <p class="lead">Seat Number: <mark><%= @ticket.seat.name %></mark></p>
+          <p class="lead">Seat Number: <mark><%= @ticket.seat.seat_number %></mark></p>
         <% end %>
 				<div class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
 					Buy

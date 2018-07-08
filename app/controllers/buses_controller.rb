@@ -1,11 +1,16 @@
 class BusesController < ApplicationController
 
-
-
 	def create
 		@bus = Bus.new(bus_params)
-		if @bus.save
-			redirect_to admin_path
+		respond_to do |format|
+			if @bus.save
+			 	flash.notice = "bus has saved successfully"
+
+				format.html {redirect_to '/admin'}
+			else
+				flash.alert = "Please complete form by filling all fields"
+				format.html { redirect_to '/admin' }
+			end
 		end
 	end
 
@@ -14,6 +19,6 @@ class BusesController < ApplicationController
 
 
 	def bus_params
-		params.require(:bus).permit(:number, :seats)
+		params.require(:bus).permit(:number, :num_seats)
 	end
 end

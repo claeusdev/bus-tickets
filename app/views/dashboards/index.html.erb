@@ -89,7 +89,7 @@
 		                </h2>
 		                <% @buses.each do |bus| %>
 							<p>Bus Number: <%= bus.number %></p>
-							<p>Number of seats: <%= bus.seats.count %></p>
+							<p>Number of seats: <%= bus.num_seats %></p>
 							<hr>
 		                <% end %>
 		              </div>
@@ -169,7 +169,7 @@
 
 			<div class="form-group">
 				<%= f.label :seat_id, class: "form-label" %>
-				<%= f.collection_select :seat_id, Seat.all, :id, :name, class: "form-control" %>
+				<%= f.grouped_collection_select :seat_id, Bus.order(:number), :seats, :number, :id, :seat_number, class: "form-control" %>
 			</div>
 
 			<div class="form-group">
@@ -200,12 +200,12 @@
         <%= form_with(model: @bus) do |f| %>
    
 			<div class="form-group">
-				<%= f.label :seats, "Number of seats", class: "form-label" %>
-				<%= f.number_field :seats, class: "form-control" %>
+				<%= f.label :num_seats, "Number of seats", class: "form-label" %>
+				<%= f.number_field :num_seats, class: "form-control" %>
 			</div>
 
 			<div class="form-group">
-				<%= f.label :number, class: "form-label" %>
+				<%= f.label :number, "Registration Number", class: "form-label" %>
 				<%= f.text_field :number, class: "form-control" %>
 			</div>
 
@@ -224,7 +224,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header bg-warning">
-        <h5 class="modal-title" id="newSeatModalLabel">Seat</h5>
+        <h5 class="modal-title" id="newSeatModalLabel">New Seat</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -233,13 +233,13 @@
         <%= form_with(model: @seat) do |f| %>
    
 			<div class="form-group">
-				<%= f.label :bus_id, "Number of seats", class: "form-label" %>
+				<%= f.label :bus_id, "Bus Number", class: "form-label" %>
 				<%= f.collection_select :bus_id, Bus.all, :id, :number, {}, class: "form-control" %>
 			</div>
 
 			<div class="form-group">
-				<%= f.label :name, class: "form-label" %>
-				<%= f.text_field :name, class: "form-control" %>
+				<%= f.label :seat_number, "Seat Number", class: "form-label" %>
+				<%= f.number_field :seat_number, class: "form-control" %>
 			</div>
 
 			<div class="modal-footer">

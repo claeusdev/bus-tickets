@@ -20,6 +20,6 @@ class SeatsController < ApplicationController
 
 
 	def seat_params
-		params.require(:seat).permit(:bus_id, :name)
+		params.require(:seat).permit(:bus_id, :seat_number)
 	end
 end

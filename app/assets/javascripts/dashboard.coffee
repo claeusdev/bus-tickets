@@ -1,3 +1,10 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+jQuery ->
+    seats = $('#ticket_seat_id').html()
+    $('#ticket_bus_id').change -> 
+        bus = $('ticket_bus_id :selected').text()
+        options = $(seats).filter("optgroup[label='#{bus}'").html()
+        if options
+            console.log(option)
+            $('ticket_seat_id').html(options)
+        else 
+             $('ticket_seat_id').empty()

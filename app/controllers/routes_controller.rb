@@ -2,6 +2,16 @@ class RoutesController < ApplicationController
 
     def show
         @route = Route.find(params[:id])
+        @tickets = @route.tickets
+        @all_tickets = []
+
+        @tickets.each do |ticket|
+            if ticket.seat.available
+                @all_tickets.push(ticket)
+            end
+        end
+        @available_tickets = @all_tickets
+        p @available_tickets
     end
 
     def create

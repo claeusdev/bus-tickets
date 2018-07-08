@@ -3,4 +3,5 @@ class Ticket < ApplicationRecord
   has_many :orders, dependent: :destroy
   belongs_to :bus
   belongs_to :seat
+
 end

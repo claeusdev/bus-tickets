@@ -5,6 +5,6 @@
         %p.lead= ticket.departure_date.strftime('Departure date: %m/%d/%Y')
         %p.lead= ticket.departure_time.strftime('Departure time: %I:%M%p')
         %p.lead= "Bus Number: #{ticket.bus.number}"
-        %p.lead= "Seat number: #{ticket.seat.name}"
+        %p.lead= "Seat number: #{ticket.seat.seat_number}"
         -# = link_to "Reserve ticket", reserve_ticket_path(ticket_id: ticket.id), method: :post
         

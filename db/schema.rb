@@ -10,16 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180702183404) do
+ActiveRecord::Schema.define(version: 20180707132646) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "buses", force: :cascade do |t|
     t.string "number"
-    t.integer "seats"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "num_seats"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -41,10 +41,11 @@ ActiveRecord::Schema.define(version: 20180702183404) do
   end
 
   create_table "seats", force: :cascade do |t|
-    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "bus_id"
+    t.boolean "available", default: false
+    t.integer "seat_number"
     t.index ["bus_id"], name: "index_seats_on_bus_id"
   end
 

@@ -8,6 +8,7 @@ class OrdersController < ApplicationController
         @ticket = Ticket.find(params[:id])
         p @ticket
         current_user.orders.create(ticket_id: @ticket.id, order_total: @ticket.price)
+        @ticket.seat.available = false
         redirect_to profile_path
       end
     end
