@@ -15,11 +15,13 @@ class SeatsController < ApplicationController
 		end
 	end
 
+	
+
 
 	private
 
 
 	def seat_params
-		params.require(:seat).permit(:bus_id, :seat_number)
+		params.require(:seat).permit(:bus_id, :seat_number, :available)
 	end
 end

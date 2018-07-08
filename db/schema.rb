@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20180707132646) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "bus_id"
-    t.boolean "available", default: false
+    t.boolean "available", default: true
     t.integer "seat_number"
     t.index ["bus_id"], name: "index_seats_on_bus_id"
   end

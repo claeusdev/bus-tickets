@@ -6,7 +6,7 @@ class RoutesController < ApplicationController
         @all_tickets = []
 
         @tickets.each do |ticket|
-            if ticket.seat.available
+            if ticket.seat.available == true
                 @all_tickets.push(ticket)
             end
         end

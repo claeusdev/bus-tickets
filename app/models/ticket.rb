@@ -4,4 +4,7 @@ class Ticket < ApplicationRecord
   belongs_to :bus
   belongs_to :seat
 
+  def make_unavailable
+		seat.available = false
+	end
 end
