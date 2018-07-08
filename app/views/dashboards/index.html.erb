@@ -88,9 +88,9 @@
 		                	Buses
 		                </h2>
 		                <% @buses.each do |bus| %>
-							<p>Bus Number: <%= bus.number %></p>
-							<p>Number of seats: <%= bus.num_seats %></p>
-							<hr>
+											<p>Bus Number: <%= bus.number %></p>
+											<p>Number of seats: <%= bus.num_seats %></p>
+											<hr>
 		                <% end %>
 		              </div>
 		            </div>
@@ -169,7 +169,7 @@
 
 			<div class="form-group">
 				<%= f.label :seat_id, class: "form-label" %>
-				<%= f.grouped_collection_select :seat_id, Bus.order(:number), :seats, :number, :id, :seat_number, class: "form-control" %>
+				<%= f.grouped_collection_select :seat_id, Bus.order(:number), :available_seats, :number, :id, :seat_number, class: "form-control" %>
 			</div>
 
 			<div class="form-group">
