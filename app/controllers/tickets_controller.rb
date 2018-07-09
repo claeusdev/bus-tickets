@@ -4,10 +4,8 @@ class TicketsController < ApplicationController
 	def show
 	end
 
-
 	def create
 		@ticket = Ticket.new(ticket_params)
-
 		if @ticket.save
             redirect_to admin_path
         else 
@@ -15,7 +13,7 @@ class TicketsController < ApplicationController
 		end
 	end
 
-	 def edit
+	def edit
 
     end
 

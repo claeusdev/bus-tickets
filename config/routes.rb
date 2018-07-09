@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   end
 
   get '/admin', to: "dashboards#index"
+  get '/cool', to: "dashboards#cool"
+
   resources :routes
   devise_for :users
 
