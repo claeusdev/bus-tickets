@@ -13,6 +13,18 @@ class OrdersController < ApplicationController
     end
 
 
+    def show
+      @order = Order.find(params[:id])
+      respond_to do |format|
+        format.html
+        format.pdf do
+          pdf = OrderPdf.new(@order)
+          send_data pdf.render
+        end
+      end
+    end
+
+
     private
 
     def set_ticket

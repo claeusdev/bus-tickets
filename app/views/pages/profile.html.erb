@@ -17,7 +17,7 @@
         </ul>
         <div class="tab-content" id="myTabContent">
           <div class="tab-pane fade show active" id="tickets" role="tabpanel" aria-labelledby="tickets-tab">
-            <h2 class="text-center py-4">
+            <div class="text-center py-4">
               <% if current_user.orders.present? %>
                 <div class="row">
                   <%= render current_user.orders %>
@@ -27,7 +27,7 @@
                   You have not reserved any ticket <%= link_to "Search for tickets", root_path %>
                 </h1>
               <% end %>
-            </h2>
+            </div>
           </div>
           
           <div class="tab-pane fade" id="settings" role="tabpanel" aria-labelledby="settings-tab">

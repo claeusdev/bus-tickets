@@ -2,5 +2,8 @@
     .card
         .card-header= order.ticket_id
         .card-body
+            %p= "Bus Number: #{order.ticket.bus.number}"
+            %p= "Seat Number: #{order.ticket.seat.seat_number}"
             %p= order.ticket.departure_date.strftime('Departure date: %m/%d/%Y')
             %p= order.ticket.departure_time.strftime('Departure time: %I:%M%p')
+            %p= link_to "View", order
